@@ -1,0 +1,1 @@
+/home/vagrant/atomichael.com/app/views/projects/edit.blade.php

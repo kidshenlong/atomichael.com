@@ -19,3 +19,5 @@
 });*/
 
 Route::resource('posts', 'PostsController');
+
+Route::resource('projects', 'ProjectsController');

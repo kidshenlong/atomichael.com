@@ -13,7 +13,7 @@ class PostsTableSeeder extends Seeder {
 		{
 			Post::create([
                 'title' => $faker->sentence(5),
-                'body' => $faker->paragraph(4),
+                'body' => $faker->paragraph(50),
                 'mainImg' => $faker->imageUrl($width = 640, $height = 480, 'cats')
 			]);
 		}
