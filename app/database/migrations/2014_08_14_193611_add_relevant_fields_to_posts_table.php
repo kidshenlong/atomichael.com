@@ -14,8 +14,8 @@ class AddRelevantFieldsToPostsTable extends Migration {
 	{
 		Schema::table('posts', function(Blueprint $table)
 		{
-            $table->string('title')->after('id');
-            $table->text('body')->after('title');
+            $table->string('title')->nullable()->after('id');
+            $table->text('body')->nullable()->after('title');
 		});
 	}
 

@@ -14,7 +14,7 @@ class AddMainImgFieldToPostsTable extends Migration {
 	{
 		Schema::table('posts', function(Blueprint $table)
 		{
-            $table->string('mainImg')->after('body');
+            $table->string('mainImg')->nullable()->after('body');
 		});
 	}
 

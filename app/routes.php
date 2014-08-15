@@ -11,11 +11,10 @@
 |
 */
 
-/*Route::get('/', function()
-{
+/*Route::get('/', function(){
 	//return View::make('hello');
     //dd(App::environment());
-    return getenv('passwd');
+    //return getenv('test');
 });*/
 
 Route::resource('posts', 'PostsController');
