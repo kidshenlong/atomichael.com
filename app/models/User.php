@@ -9,6 +9,7 @@ class User extends Eloquent implements UserInterface, RemindableInterface {
 
 	use UserTrait, RemindableTrait;
 
+    public $timestamps = false;
 	/**
 	 * The database table used by the model.
 	 *
@@ -21,6 +22,17 @@ class User extends Eloquent implements UserInterface, RemindableInterface {
 	 *
 	 * @var array
 	 */
-	protected $hidden = array('password', 'remember_token');
+	protected $hidden = array('password');//, 'remember_token');
+
+    protected $fillable = ['email','password','firstName','lastName','lastLogin'];
+
+    // Add your validation rules here
+    public static $rules = [
+        'email' => 'required,email',
+        'password' => 'required',
+        'fistName' => 'required',
+        'lastName' => 'required',
+        'lastLogin' => 'required'
+    ];
 
 }
