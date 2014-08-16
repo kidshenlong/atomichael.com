@@ -1,4 +1,4 @@
-@extends('master')
+@extends('partials/master')
 
 @section('container')
 <h1>Posts</h1>

@@ -10,27 +10,22 @@
 | and give it the Closure to execute when that URI is requested.
 |
 */
+Route::group(['before'=>'auth'], function() {
+    Route::resource('admin','AdminController', array('only' => array('index')));
+    Route::get('admin/logout','AdminSessionsController@destroy');
 
-Route::get('admin/login','SessionsController@create');
+    Route::resource('admin/sessions', 'AdminSessionsController', array('except' => array('index', 'store', 'create')));
 
-Route::get('admin/logout','SessionsController@destroy');
+    Route::resource('admin/posts', 'AdminPostsController');
 
-
-Route::resource('admin/sessions', 'SessionsController', array('only' => array('index', 'store', 'create')));
-
-Route::group(['prefix' => 'admin', 'before'=>'auth'], function() {
-
-    Route::get('/', function(){
-        return 'Admin Home';
-    });
-
-    Route::resource('sessions', 'SessionsController', array('except' => array('index', 'store', 'create')));
-
-    Route::resource('posts', 'PostsController');
-
-    Route::resource('projects', 'ProjectsController');
+    Route::resource('admin/projects', 'AdminProjectsController');
 });
+
+Route::get('admin/login','AdminSessionsController@create');
+
+Route::resource('admin/sessions', 'AdminSessionsController', array('only' => array('index', 'store', 'create')));
 
 Route::resource('posts', 'PostsController', array('only' => array('index', 'show')));
 
 Route::resource('projects', 'ProjectsController', array('only' => array('index', 'show')));
+

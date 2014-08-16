@@ -4,7 +4,7 @@
         <meta charset="UTF-8">
     </head>
 
-    <body>
+    <body> <!--style="background-color: #0A0A0A; color:white;"-->
         {{ Form::open(['route' => 'admin.sessions.store']) }}
             <div>
                 {{ Form::label('email', 'Email:') }}

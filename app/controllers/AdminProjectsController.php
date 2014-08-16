@@ -1,48 +1,43 @@
 <?php
 
-class SessionsController extends \BaseController {
+class AdminProjectsController extends \BaseController {
 
 	/**
 	 * Display a listing of the resource.
-	 * GET /sessions
+	 * GET /adminprojects
 	 *
 	 * @return Response
 	 */
 	public function index()
 	{
-
+		//
 	}
 
 	/**
 	 * Show the form for creating a new resource.
-	 * GET /sessions/create
+	 * GET /adminprojects/create
 	 *
 	 * @return Response
 	 */
 	public function create()
 	{
-        if(Auth::check()) return Redirect::to('/admin');
-        return View::make('sessions.create');
+		//
 	}
 
 	/**
 	 * Store a newly created resource in storage.
-	 * POST /sessions
+	 * POST /adminprojects
 	 *
 	 * @return Response
 	 */
 	public function store()
 	{
-		if(Auth::attempt(Input::only('email','password'))){
-            return Auth::user();
-        }
-        return Redirect::back()->withInput();
-
+		//
 	}
 
 	/**
 	 * Display the specified resource.
-	 * GET /sessions/{id}
+	 * GET /adminprojects/{id}
 	 *
 	 * @param  int  $id
 	 * @return Response
@@ -54,7 +49,7 @@ class SessionsController extends \BaseController {
 
 	/**
 	 * Show the form for editing the specified resource.
-	 * GET /sessions/{id}/edit
+	 * GET /adminprojects/{id}/edit
 	 *
 	 * @param  int  $id
 	 * @return Response
@@ -66,7 +61,7 @@ class SessionsController extends \BaseController {
 
 	/**
 	 * Update the specified resource in storage.
-	 * PUT /sessions/{id}
+	 * PUT /adminprojects/{id}
 	 *
 	 * @param  int  $id
 	 * @return Response
@@ -78,16 +73,14 @@ class SessionsController extends \BaseController {
 
 	/**
 	 * Remove the specified resource from storage.
-	 * DELETE /sessions/{id}
+	 * DELETE /adminprojects/{id}
 	 *
 	 * @param  int  $id
 	 * @return Response
 	 */
-	public function destroy()
+	public function destroy($id)
 	{
-		Auth::logout();
-        //return Redirect::route('admin.sessions.create');
-        return Redirect::to('admin/login');
+		//
 	}
 
 }

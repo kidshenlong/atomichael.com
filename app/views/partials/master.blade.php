@@ -15,7 +15,7 @@
 	<div id='header'>
 			<div='nav'>
 				<ul>
-					<li><a href='posts'>Blog</a></li>
+					<li><a href='../posts'>Blog</a></li>
 				</ul>
 			</div>
 	</div>
