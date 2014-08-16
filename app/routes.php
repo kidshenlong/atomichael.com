@@ -11,35 +11,26 @@
 |
 */
 
-/*Route::get('/', function(){
-	//return View::make('hello');
-    //dd(App::environment());
-    //return getenv('test');
-    $date = new \DateTime;
-    User::create([
-        'email' => 'michaelpm91@googlemail.com',
-        'firstName' => 'Michael',
-        'lastName' => 'Patterson-Muir',
-        'password' => Hash::make('secret'),
-        'lastLogin' => $date
-    ]);
+Route::get('admin/login','SessionsController@create');
 
-    return 'Done';
-});*/
+Route::get('admin/logout','SessionsController@destroy');
 
-Route::group(['prefix' => 'admin'], function() {
+
+Route::resource('admin/sessions', 'SessionsController', array('only' => array('index', 'store', 'create')));
+
+Route::group(['prefix' => 'admin', 'before'=>'auth'], function() {
+
     Route::get('/', function(){
-        //return Redirect::to('admin/login');
         return 'Admin Home';
-    })->before('auth');
+    });
 
-    Route::get('login','SessionsController@create');
+    Route::resource('sessions', 'SessionsController', array('except' => array('index', 'store', 'create')));
 
-    Route::get('logout','SessionsController@destroy');
+    Route::resource('posts', 'PostsController');
 
-    Route::resource('sessions', 'SessionsController');
+    Route::resource('projects', 'ProjectsController');
 });
 
-Route::resource('posts', 'PostsController');
+Route::resource('posts', 'PostsController', array('only' => array('index', 'show')));
 
-Route::resource('projects', 'ProjectsController');
+Route::resource('projects', 'ProjectsController', array('only' => array('index', 'show')));
