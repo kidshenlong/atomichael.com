@@ -1,13 +1,15 @@
 @extends('partials/master')
 
 @section('container')
-<h1>Posts</h1>
-    <ul style="list-style: none; text-align: center; font-size: 24px;">
-    @foreach ($posts as $post)
-        <li>
-            <p>{{link_to("/posts/{$post->getSlug()}", $post->title) }}</p>
-            {{ HTML::image($post->mainImg)}}
-        </li>
-    @endforeach
-    </ul>
+    <div class="row">
+        <div class="col-sm-8 blog-main">
+            @foreach ($posts as $post)
+            <div>
+                <h2>{{ $post->title }}</h2>
+                {{ HTML::image($post->mainImg,'', array('class' => 'img-responsive'))}}
+                <p>{{ $post->body }}</p>
+            </div>
+            @endforeach
+        </div>
+    </div>
 @stop

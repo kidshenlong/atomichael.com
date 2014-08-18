@@ -11,7 +11,7 @@ class PostsController extends \BaseController {
 	{
 		$posts = Post::all();
 
-		return View::make('posts.index', compact('posts'));
+		return View::make('posts.index')->with('posts', $posts);
 	}
 
 	/**
@@ -53,7 +53,8 @@ class PostsController extends \BaseController {
 	{
 		//$post = Post::findOrFail($id);
         $post = Post::whereslug(urldecode($title))->first();
-		return View::make('posts.show', compact('post'));
+		//return View::make('posts.show', compact('post'));
+        return View::make('posts.show')->with('post', $post);
 	}
 
 	/**
@@ -66,7 +67,7 @@ class PostsController extends \BaseController {
 	{
 		$post = Post::find($id);
 
-		return View::make('posts.edit', compact('post'));
+		return View::make('posts.edit')->with('post', $post);
 	}
 
 	/**

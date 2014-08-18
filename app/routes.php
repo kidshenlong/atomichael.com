@@ -10,6 +10,8 @@
 | and give it the Closure to execute when that URI is requested.
 |
 */
+Route::get('/', 'HomeController@index');
+
 Route::group(['before'=>'auth'], function() {
     Route::resource('admin','AdminController', array('only' => array('index')));
     Route::get('admin/logout','AdminSessionsController@destroy');
